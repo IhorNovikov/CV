@@ -1,0 +1,149 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-areas: "header header" "main main" "footer footer";
+    max-width: 1024px;
+    margin: 0 auto;
+    padding-left: 2rem;
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-family: 'Lato', sans-serif;
+    background: #bfefff;
+}
+
+.header {
+    position: relative;
+    grid-area: header;
+    width: 90%;
+}
+
+.main {
+    grid-area: main;
+    width: 90%;
+}
+
+.skills li {
+    display: flex;
+    flex-direction: column;
+    margin-left: -40px;
+}
+
+.skills span {
+    font-weight: bold;
+}
+
+.footer {
+    grid-area: footer;
+}
+
+.contacts ul {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: -40px;
+    font-size: 1.5rem;
+    list-style: none;
+}
+
+img {
+    position: absolute;
+    top: 15%;
+    left: 60%;
+    width: 30%;
+    border-radius: 15%;
+    opacity: 0.85;
+    z-index: 5;
+}
+
+.summary ul {
+    margin-top: 0;
+}
+
+.code-examples {
+    border-left: 5px solid #98bfcc;
+}
+
+.icons {
+    text-align: center;
+}
+
+.icons li {
+    display: inline;
+}
+
+.icons a {
+    margin-right: 25px;
+    font-size: 50px;
+    color: #262f33;
+}
+
+.icons a:hover {
+    color: #ff73dc;
+}
+
+pre {
+    margin-left: 10px;
+    font-size: 1.18rem;
+}
+
+h2 {
+    width: 60%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+    background: #b9afb7;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+h3 {
+    font-size: 2rem;
+    ;
+}
+
+a {
+    color: #08050a;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #8e37c9;
+}
+
+@media screen and (max-width: 425px) {
+    img {
+        position: relative;
+        top: 15%;
+        left: 20%;
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .wrapper {
+        padding-left: 1rem;
+    }
+    .contacts li {
+        display: flex;
+        flex-direction: column;
+    }
+    h2 {
+        font-size: 28px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 868px) {
+    .code-examples {
+        display: none;
+    }
+    .icons {
+        margin-left: -40px;
+    }
+}

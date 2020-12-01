@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ihor Novikov</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d92e512f50.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h2>Basic Info</h2>
+            <h3>Ihor Novikov</h3>
+            <img src="img/photo.jpg" alt="my photo">
+            <div class="contacts">
+                <h2>Contact info</h2>
+                <ul>
+                    <li>
+                        E-mail:
+                        <a href="mailto:novikov8118@gmail.com" target="_blank" rel="nofollow noopener">novikov8118@gmail.com</a>
+                    </li>
+                    <li>
+                        Phone number:
+                        <a href="tel:+380673631457" target="_blank" rel="nofollow noopener">+38(067)363-14-57</a>
+                    </li>
+                    <li>
+                        Social networks:
+                        <a href="https://www.facebook.com/igor.novikov.8118" target="_blank" rel="nofollow noopener">Facebook</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </header>
+
+        <main class="main">
+            <section>
+                <h2>Summary</h2>
+                <div class="summary">
+                    My goal is to find a company where I can grow my career, develop new professional skills, and bring a lot of value to the company and people. My aim is the position in front-end development.<br>
+                    <strong>Personal qualities:</strong>
+                    <ul>
+                        <li>Motivation to grow and learn new programming languages and technologies</li>
+                        <li>Good communication skills</li>
+                        <li>Able to solve difficult problems and extremely good at planning</li>
+                        <li>Strong analytical skills and good grasp about managing a team</li>
+                    </ul>
+                </div>
+            </section>
+            <section>
+                <h2>Skills</h2>
+                <ul class="skills">
+                    <li><span>Technologies and frameworks:</span> HTML, CSS, Sass, Javascript, TypeScript, ReactJS, NodeJS </li>
+                    <li><span>Source Control:</span> GitHub</li>
+                    <li><span>OS:</span> Ubuntu, Windows</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Code examples</h2>
+                <div class="code-examples">
+                    <pre>
+import React, { useState } from 'react'
+import { access } from './access'
+import styles from './authForm.module.css'
+import NavBar from '../NavBar/NavBar'
+
+const AuthForm = ({ allUs, allPass, firstName, lastName, email }) => {
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [error, setError] = useState('');
+    const [form, setForm] = useState(styles.formPassive);
+
+    const onSubmit = async e => {
+        e.preventDefault();
+        setIsLoading(true);
+        setError('');
+        try {
+            await access(username, password, allUs, allPass);
+            setIsLoggedIn(true);
+            setError('');
+            setPassword('');
+        } catch (error) {
+            setError('Incorrect username or password');
+        }
+        setIsLoading(false);
+    };
+
+    const onClick = () => {
+        setError('');
+        setForm(styles.formActive);
+        setUsername('');
+        setPassword('');
+    }
+
+    function InvalidMsg(e) {
+        if ((username === '') && (password === '')) {
+            setError('Please enter username and password');
+        }
+        else if (username === '') {
+            setError('Please enter username');
+        }
+        else {
+            setError('Please enter password');
+        }
+    }
+
+    return (
+        &lt;&gt;
+            {isLoggedIn ? ( 	
+                &lt;div&gt;
+                    &lt;div className={styles.userGreeting}&gt;
+                        &lt;div>Welcome&lt;/div&gt;
+                        &lt;div>{username}!&lt;/div&gt;
+                        &lt;button onClick={() => setIsLoggedIn(false)}&gt;Log Out&lt;/button&gt;  
+                    &lt;/div&gt;
+
+                &lt;/div&gt;) : (
+                    &lt;form className={form} onSubmit={onSubmit}&gt;
+                        &lt;p className={styles.formGreeting}>Login to your account&lt;/p&gt;
+                        &lt;div&gt;
+                            &lt;button className={styles.closeForm} 
+                                    onClick={() => setForm(styles.formPassive)}&gt;&times;&lt;
+                            /button&gt;
+
+                            &lt;input className={styles.inputName}
+                                type="text"
+                                placeholder="username"
+                                value={username}
+                                onChange={(e) => setUsername(e.currentTarget.value)}
+                                onInvalid={InvalidMsg}
+                                required
+                            /&gt; 
+                        &lt;/div&gt;
+                        &lt;div&gt;
+                            &lt;input className={styles.inputPass}
+                                type="password"
+                                placeholder="password"
+								value={password}
+                                onChange={(e) => setPassword(e.currentTarget.value)}
+                                onInvalid={InvalidMsg}
+                                required
+                            /&gt; 
+                        &lt;/div&gt;
+                            &lt;button
+                                className={styles.submit}
+                                type="submit"
+                            &gt;{isLoading ? 'Logging In ' : 'Log In'}
+                            &lt;/button&gt;                                              
+                        {error && &lt;p className={styles.error}&gt;{error}&lt;/p&gt;}
+                    &lt;/form&gt;
+                
+                ) }
+            &lt;NavBar isLoggedIn={isLoggedIn} username={username} 
+                    onClick={onClick} firstName={firstName} 
+                    lastName={lastName} email={email} /&gt;
+        &lt;/&gt;
+    )
+};
+
+export default AuthForm;
+                </pre>
+                </div>
+                <div class="code-link">
+                    <a href="https://github.com/IhorNovikov/GuessIdiomGame/blob/master/index.html" target="_blank" rel="nofollow noopener">Github code examples</a>
+                </div>
+            </section>
+            <section>
+                <h2>Experience</h2>
+                <div>
+                    Took part in the creation of an application that provides information about the equipment condition and current works in RNPP.
+                </div>
+            </section>
+            <section>
+                <h2>Education</h2>
+                <div>
+                    Master of Arts(M.A.) degree in Atomic energy <br> 2006 Sevastopol national University of Nuclear Energy and Industry (SNUNEI)
+                </div>
+            </section>
+            <section>
+                <h2>English </h2>
+                <div>
+                    <strong>Upper-Intermediate(B2) - </strong>
+                    <a href="https://app.tracktest.eu/index.php?share=5dfc9f37867eb4b216575abe6492a5bc6cf1612cf9f0db315484db3f8124" target="_blank">Tracktest certificate</a><br> I can understand the main ideas of complex text on both concrete and abstract
+                    topics, including technical discussions in my field of specialisation. I can produce clear, detailed text on a wide range of subjects.
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div>
+                <ul class="icons">
+                    <li>
+                        <a href="https://github.com/IhorNovikov" target="_blank" rel="nofollow noopener">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/ihor-novikov-947a791a6" target="_blank" rel="nofollow noopener">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/Winner39137635" target="_blank" rel="nofollow noopener">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/igor.novikov.8118" target="_blank" rel="nofollow noopener">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
