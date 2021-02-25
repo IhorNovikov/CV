@@ -1,2 +1,2 @@
 # CV
-https://IhorNovikov.github.io/CV/
+https://IhorNovikov.github.io/cv/
