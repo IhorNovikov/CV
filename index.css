@@ -64,6 +64,10 @@ img {
     margin-top: 0;
 }
 
+ol {
+    padding-left: 2rem;  
+}
+
 .code-examples {
     border-left: 5px solid #98bfcc;
 }
@@ -86,9 +90,16 @@ img {
     color: #ff73dc;
 }
 
-pre {
+.code {
     margin-left: 10px;
     font-size: 1.18rem;
+}
+
+.education {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-family: 'Lato', sans-serif;
 }
 
 h2 {
@@ -147,3 +158,7 @@ a:hover {
         margin-left: -40px;
     }
 }
+
+
+
+
